@@ -1,0 +1,75 @@
+---
+import '../styles/global.css';
+import Nav from '../components/Nav.astro';
+const year = new Date().getFullYear();
+---
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1.0" />
+    <title>5280 Construction</title>
+  </head>
+  <body class="bg-gradient-to-b from-white to-gray-50 text-gray-800">
+    <Nav />
+
+    <main class="max-w-6xl mx-auto p-6">
+      <section class="py-16">
+        <div class="grid md:grid-cols-2 gap-10 items-center">
+          <div>
+            <h2 class="text-5xl font-extrabold mb-4 leading-tight">Reliable construction
+              <span class="text-brand"> in Denver</span>
+            </h2>
+            <p class="text-lg text-gray-600 mb-6">Local contractors specializing in residential and commercial builds, renovations, and site work — dependable teams, clear timelines.</p>
+            <a href="#contact" class="btn-primary">Get a quote</a>
+          </div>
+          <div>
+            <div class="h-72 hero-gradient rounded-xl shadow-xl flex items-center justify-center text-white text-lg font-semibold">Project spotlight</div>
+          </div>
+        </div>
+      </section>
+
+      <section id="services" class="py-12">
+        <h3 class="text-3xl font-bold mb-6">Services</h3>
+        <div class="grid md:grid-cols-3 gap-6">
+          <div class="card">
+            <h4 class="font-semibold mb-2">General Contracting</h4>
+            <p class="text-sm text-gray-600">Full project management from planning to completion.</p>
+          </div>
+          <div class="card">
+            <h4 class="font-semibold mb-2">Renovations</h4>
+            <p class="text-sm text-gray-600">Kitchen, bathroom, and whole-home remodels with attention to detail.</p>
+          </div>
+          <div class="card">
+            <h4 class="font-semibold mb-2">Site Work</h4>
+            <p class="text-sm text-gray-600">Excavation, grading, and foundation prep handled safely and efficiently.</p>
+          </div>
+        </div>
+      </section>
+
+      <section id="contact" class="py-12">
+        <div class="grid md:grid-cols-2 gap-8 items-start">
+          <div>
+            <h3 class="text-2xl font-bold mb-4">Contact</h3>
+            <p class="text-gray-600 mb-6">Reach out for a free estimate or to discuss your project.</p>
+            <ul class="text-sm text-gray-700 space-y-2">
+              <li><strong>Phone:</strong> (555) 555-5280</li>
+              <li><strong>Email:</strong> hello@5280construction.com</li>
+            </ul>
+          </div>
+          <form class="grid gap-4 bg-white p-6 rounded-lg shadow max-w-md">
+            <input placeholder="Name" class="p-3 border rounded" />
+            <input placeholder="Email" class="p-3 border rounded" />
+            <textarea placeholder="Message" class="p-3 border rounded"></textarea>
+            <button class="btn-primary">Send</button>
+          </form>
+        </div>
+      </section>
+    </main>
+
+    <footer class="bg-white border-t mt-12">
+      <div class="max-w-6xl mx-auto p-6 text-sm text-gray-500">© {year} 5280 Construction</div>
+    </footer>
+  </body>
+</html>
