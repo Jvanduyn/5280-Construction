@@ -1,49 +1,97 @@
 ---
 ---
-<nav class="bg-white/80 backdrop-blur-sm">
-  <div class="max-w-6xl mx-auto p-6 flex items-center justify-between">
-    <div class="flex items-center">
-      <a href="/" class="text-2xl font-extrabold text-brand">5280 Construction</a>
-    </div>
+<header id="nav-header" class="fixed top-0 inset-x-0 z-50 transition-all duration-300">
+  <div class="max-w-7xl mx-auto px-6 lg:px-8 h-20 flex items-center justify-between">
 
-    <div class="hidden md:flex space-x-6 items-center">
-      <a href="#services" class="text-gray-700 hover:text-brand">Services</a>
-      <a href="#contact" class="btn-primary">Contact</a>
-    </div>
-
-    <button id="nav-toggle" class="md:hidden p-2 rounded-lg focus:outline-none" aria-expanded="false" aria-controls="mobile-menu">
-      <svg id="icon-open" xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
-      </svg>
-      <svg id="icon-close" xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 hidden" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
-      </svg>
-    </button>
-  </div>
-
-  <div id="mobile-menu" class="md:hidden hidden px-6 pb-4">
-    <a href="#services" class="block py-2 text-gray-700">Services</a>
-    <a href="#contact" class="block py-2">
-      <span class="btn-primary w-full inline-block text-center">Contact</span>
+    <!-- Logo -->
+    <a href="/" class="flex items-center gap-3 group shrink-0">
+      <span class="font-display text-3xl font-bold text-white group-hover:text-[#f0a500] transition-colors leading-none tracking-tight">5280</span>
+      <div class="h-5 w-px bg-[#f0a500]/50"></div>
+      <span class="text-[10px] font-bold text-white/40 uppercase tracking-[0.25em]">Project LLC</span>
     </a>
+
+    <!-- Desktop nav -->
+    <nav class="hidden md:flex items-center gap-10">
+      <a href="#services" class="text-white/50 hover:text-white text-xs font-semibold uppercase tracking-[0.2em] transition-colors">Services</a>
+      <a href="#about"    class="text-white/50 hover:text-white text-xs font-semibold uppercase tracking-[0.2em] transition-colors">About</a>
+      <a href="#process"  class="text-white/50 hover:text-white text-xs font-semibold uppercase tracking-[0.2em] transition-colors">Process</a>
+      <a href="#contact"  class="text-white/50 hover:text-white text-xs font-semibold uppercase tracking-[0.2em] transition-colors">Contact</a>
+    </nav>
+
+    <!-- CTA + hamburger -->
+    <div class="flex items-center gap-4">
+      <a href="#contact" class="hidden md:inline-flex items-center gap-2 bg-[#f0a500] hover:bg-[#cc8c00] text-black font-bold text-xs uppercase tracking-[0.2em] px-5 py-2.5 transition-colors duration-200">
+        Free Estimate
+      </a>
+      <button id="menu-btn" class="md:hidden flex flex-col justify-center gap-[5px] w-8 h-8" aria-label="Toggle navigation" aria-expanded="false" aria-controls="mobile-nav">
+        <span id="bar1" class="block h-0.5 w-6 bg-white origin-center transition-all duration-300"></span>
+        <span id="bar2" class="block h-0.5 w-6 bg-white transition-all duration-300"></span>
+        <span id="bar3" class="block h-0.5 w-4 bg-white origin-center transition-all duration-300"></span>
+      </button>
+    </div>
   </div>
 
-  <script type="module">
-    document.addEventListener('DOMContentLoaded', () => {
-      const btn = document.getElementById('nav-toggle');
-      const menu = document.getElementById('mobile-menu');
-      const openIcon = document.getElementById('icon-open');
-      const closeIcon = document.getElementById('icon-close');
+  <!-- Mobile nav -->
+  <div id="mobile-nav" class="hidden md:hidden border-t border-white/10 bg-black/95 backdrop-blur-md">
+    <nav class="max-w-7xl mx-auto px-6 py-6 flex flex-col gap-1">
+      <a href="#services" class="py-3 border-b border-white/5 text-white/60 hover:text-white text-sm font-semibold uppercase tracking-[0.2em] transition-colors">Services</a>
+      <a href="#about"    class="py-3 border-b border-white/5 text-white/60 hover:text-white text-sm font-semibold uppercase tracking-[0.2em] transition-colors">About</a>
+      <a href="#process"  class="py-3 border-b border-white/5 text-white/60 hover:text-white text-sm font-semibold uppercase tracking-[0.2em] transition-colors">Process</a>
+      <a href="#contact"  class="py-3 border-b border-white/5 text-white/60 hover:text-white text-sm font-semibold uppercase tracking-[0.2em] transition-colors">Contact</a>
+      <a href="#contact" class="mt-4 flex items-center justify-center bg-[#f0a500] hover:bg-[#cc8c00] text-black font-bold text-sm uppercase tracking-[0.2em] py-3.5 transition-colors">
+        Get Free Estimate
+      </a>
+    </nav>
+  </div>
+</header>
 
-      if (!btn || !menu) return;
+<style>
+  #nav-header {
+    background: transparent;
+  }
+  #nav-header.scrolled {
+    background: rgba(10, 10, 10, 0.92);
+    backdrop-filter: blur(16px);
+    border-bottom: 1px solid rgba(255,255,255,0.06);
+  }
+</style>
 
-      btn.addEventListener('click', () => {
-        menu.classList.toggle('hidden');
-        openIcon.classList.toggle('hidden');
-        closeIcon.classList.toggle('hidden');
-        const expanded = btn.getAttribute('aria-expanded') === 'true';
-        btn.setAttribute('aria-expanded', (!expanded).toString());
-      });
+<script>
+  const header  = document.getElementById('nav-header');
+  const btn     = document.getElementById('menu-btn');
+  const mobileNav = document.getElementById('mobile-nav');
+  const bar1    = document.getElementById('bar1');
+  const bar2    = document.getElementById('bar2');
+  const bar3    = document.getElementById('bar3');
+
+  window.addEventListener('scroll', () => {
+    header?.classList.toggle('scrolled', window.scrollY > 40);
+  });
+
+  btn?.addEventListener('click', () => {
+    const open = mobileNav?.classList.toggle('hidden') === false;
+    btn.setAttribute('aria-expanded', String(open));
+    if (open) {
+      bar1?.style.setProperty('transform', 'translateY(6.5px) rotate(45deg)');
+      bar2?.style.setProperty('opacity', '0');
+      bar3?.style.setProperty('transform', 'translateY(-6.5px) rotate(-45deg)');
+      bar3?.style.setProperty('width', '1.5rem');
+    } else {
+      bar1?.style.removeProperty('transform');
+      bar2?.style.removeProperty('opacity');
+      bar3?.style.removeProperty('transform');
+      bar3?.style.removeProperty('width');
+    }
+  });
+
+  mobileNav?.querySelectorAll('a').forEach(a => {
+    a.addEventListener('click', () => {
+      mobileNav.classList.add('hidden');
+      btn?.setAttribute('aria-expanded', 'false');
+      bar1?.style.removeProperty('transform');
+      bar2?.style.removeProperty('opacity');
+      bar3?.style.removeProperty('transform');
+      bar3?.style.removeProperty('width');
     });
-  </script>
-</nav>
+  });
+</script>
